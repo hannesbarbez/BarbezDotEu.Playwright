@@ -12,9 +12,9 @@ namespace BarbezDotEu.Playwright.Tests
         [Fact]
         public void GetName_ShouldReturnCorrectBrowserTypeName()
         {
-            BrowserSelector.GetName(Browser.Chromium).Should().Be("Chromium");
-            BrowserSelector.GetName(Browser.Firefox).Should().Be("Firefox");
-            BrowserSelector.GetName(Browser.Webkit).Should().Be("Webkit");
+            BrowserSelector.GetName(Browser.Chromium).Should().Be("chromium");
+            BrowserSelector.GetName(Browser.Firefox).Should().Be("firefox");
+            BrowserSelector.GetName(Browser.Webkit).Should().Be("webkit");
         }
 
         [Fact]

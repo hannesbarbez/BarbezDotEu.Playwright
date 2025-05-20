@@ -17,13 +17,18 @@ namespace BarbezDotEu.Playwright
         /// <param name="browser">The browser enum value.</param>
         /// <returns>The name of the corresponding property on <see cref="IPlaywright"/>.</returns>
         /// <exception cref="ArgumentOutOfRangeException">Thrown when the provided browser value is not supported.</exception>
-        public static string GetName(Browser browser) => browser switch
+        public static string GetName(Browser browser)
         {
-            Browser.Chromium => nameof(IPlaywright.Chromium),
-            Browser.Firefox => nameof(IPlaywright.Firefox),
-            Browser.Webkit => nameof(IPlaywright.Webkit),
-            _ => throw new ArgumentOutOfRangeException(nameof(browser), browser, null)
-        };
+            var result = browser switch
+            {
+                Browser.Chromium => nameof(IPlaywright.Chromium),
+                Browser.Firefox => nameof(IPlaywright.Firefox),
+                Browser.Webkit => nameof(IPlaywright.Webkit),
+                _ => throw new ArgumentOutOfRangeException(nameof(browser), browser, null)
+            };
+
+            return result.ToLower();
+        }
 
         /// <summary>
         /// Retrieves the corresponding <see cref="IBrowserType"/> from the <see cref="IPlaywright"/> instance
