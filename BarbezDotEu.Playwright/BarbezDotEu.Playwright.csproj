@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<Authors>Hannes Barbez</Authors>
+		<Company>Hannes Barbez</Company>
+		<Title>BarbezDotEu.Playwright</Title>
+		<Product>BarbezDotEu.Playwright</Product>
+		<PackageId>BarbezDotEu.Playwright</PackageId>
+		<Copyright>©2025 Hannes Barbez</Copyright>
+		<Version>1.0.0</Version>
+		<Description>
+			Helps retrieving content from web pages using Microsoft.Playwright. Useful for basic testing or fetching content from dynamic pages that require JavaScript execution.
+		</Description>
+		<PackageTags>basic;Playwright;request;SimplePlaywrightProvider;extensions</PackageTags>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageProjectUrl>https://barbez.eu</PackageProjectUrl>
+		<PackageOutputPath>./nupkg</PackageOutputPath>
+		<RepositoryUrl>https://github.com/hannesbarbez/BarbezDotEu.Playwright</RepositoryUrl>
+		<RepositoryType>GIT</RepositoryType>
+		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageIcon>ICON.png</PackageIcon>
+		<DebugSymbols>true</DebugSymbols>
+	</PropertyGroup>
+	<ItemGroup>
+		<None Include="..\README.md" Pack="true" PackagePath="\" />
+		<None Include="..\ICON.png" Pack="true" PackagePath="\" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Playwright" Version="1.52.0" />
+	</ItemGroup>
+</Project>
