@@ -28,7 +28,7 @@ namespace BarbezDotEu.Playwright
             _browser = browser;
             _browserTypeLaunchOption = new BrowserTypeLaunchOptions { Headless = headless };
 
-            Program.Main(["install", BrowserSelector.GetName(_browser)]);
+            Program.Main(new string[] { "install", BrowserSelector.GetName(_browser) });
         }
 
         /// <summary>

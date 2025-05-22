@@ -1,13 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFramework>net8.0</TargetFramework>
+		<TargetFramework>netstandard2.1</TargetFramework>
 		<Authors>Hannes Barbez</Authors>
 		<Company>Hannes Barbez</Company>
 		<Title>BarbezDotEu.Playwright</Title>
 		<Product>BarbezDotEu.Playwright</Product>
 		<PackageId>BarbezDotEu.Playwright</PackageId>
 		<Copyright>©2025 Hannes Barbez</Copyright>
-		<Version>1.0.0</Version>
+		<Version>1.0.1</Version>
 		<Description>
 			Helps retrieving content from web pages using Microsoft.Playwright. Useful for basic testing or fetching content from dynamic pages that require JavaScript execution.
 		</Description>
