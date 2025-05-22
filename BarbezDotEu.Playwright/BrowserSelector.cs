@@ -19,15 +19,17 @@ namespace BarbezDotEu.Playwright
         /// <exception cref="ArgumentOutOfRangeException">Thrown when the provided browser value is not supported.</exception>
         public static string GetName(Browser browser)
         {
-            var result = browser switch
+            switch (browser)
             {
-                Browser.Chromium => nameof(IPlaywright.Chromium),
-                Browser.Firefox => nameof(IPlaywright.Firefox),
-                Browser.Webkit => nameof(IPlaywright.Webkit),
-                _ => throw new ArgumentOutOfRangeException(nameof(browser), browser, null)
-            };
-
-            return result.ToLower();
+                case Browser.Chromium:
+                    return nameof(IPlaywright.Chromium).ToLower();
+                case Browser.Firefox:
+                    return nameof(IPlaywright.Firefox).ToLower();
+                case Browser.Webkit:
+                    return nameof(IPlaywright.Webkit).ToLower();
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(browser), browser, null);
+            }
         }
 
         /// <summary>
@@ -38,12 +40,19 @@ namespace BarbezDotEu.Playwright
         /// <param name="browser">The <see cref="Browser"/> enum value specifying the desired browser type.</param>
         /// <returns>The matching <see cref="IBrowserType"/> implementation.</returns>
         /// <exception cref="ArgumentOutOfRangeException">Thrown when the provided browser enum value is not recognized.</exception>
-        public static IBrowserType GetBrowserType(IPlaywright playwright, Browser browser) => browser switch
+        public static IBrowserType GetBrowserType(IPlaywright playwright, Browser browser)
         {
-            Browser.Chromium => playwright.Chromium,
-            Browser.Firefox => playwright.Firefox,
-            Browser.Webkit => playwright.Webkit,
-            _ => throw new ArgumentOutOfRangeException(nameof(browser), browser, null)
-        };
+            switch (browser)
+            {
+                case Browser.Chromium:
+                    return playwright.Chromium;
+                case Browser.Firefox:
+                    return playwright.Firefox;
+                case Browser.Webkit:
+                    return playwright.Webkit;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(browser), browser, null);
+            }
+        }
     }
 }

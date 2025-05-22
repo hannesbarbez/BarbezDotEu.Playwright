@@ -38,15 +38,28 @@ namespace BarbezDotEu.Playwright
         /// <returns>A task representing the asynchronous operation. The task result contains the content as a string.</returns>
         public async Task<string> GetContents(string url)
         {
-            using var playwright = await Microsoft.Playwright.Playwright.CreateAsync();
-            var @type = BrowserSelector.GetBrowserType(playwright, _browser);
-            var browser = await @type.LaunchAsync(_browserTypeLaunchOption);
-            var context = await browser.NewContextAsync();
-            var page = await context.NewPageAsync();
-            var response = await page.GotoAsync(url);
-            var content = await page.ContentAsync();
-            await browser.CloseAsync();
-            return content;
+            var playwright = await Microsoft.Playwright.Playwright.CreateAsync();
+            try
+            {
+                var @type = BrowserSelector.GetBrowserType(playwright, _browser);
+                var browser = await @type.LaunchAsync(_browserTypeLaunchOption);
+                try
+                {
+                    var context = await browser.NewContextAsync();
+                    var page = await context.NewPageAsync();
+                    var response = await page.GotoAsync(url);
+                    var content = await page.ContentAsync();
+                    return content;
+                }
+                finally
+                {
+                    await browser.CloseAsync();
+                }
+            }
+            finally
+            {
+                playwright.Dispose();
+            }
         }
     }
 }
