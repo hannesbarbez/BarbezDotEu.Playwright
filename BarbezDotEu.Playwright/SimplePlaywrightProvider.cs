@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Hannes Barbez. All rights reserved.
 // Licensed under the GNU General Public License v3.0
 
+using System;
 using System.Threading.Tasks;
 using Microsoft.Playwright;
 
@@ -60,6 +61,11 @@ namespace BarbezDotEu.Playwright
             {
                 playwright.Dispose();
             }
+        }
+
+        public async Task RenderImage(string url)
+        {
+            throw new NotImplementedException();
         }
     }
 }
