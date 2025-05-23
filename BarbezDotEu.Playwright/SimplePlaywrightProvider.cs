@@ -1,7 +1,6 @@
 ﻿// Copyright (c) Hannes Barbez. All rights reserved.
 // Licensed under the GNU General Public License v3.0
 
-using System;
 using System.Threading.Tasks;
 using Microsoft.Playwright;
 
@@ -46,9 +45,7 @@ namespace BarbezDotEu.Playwright
                 var browser = await @type.LaunchAsync(_browserTypeLaunchOption);
                 try
                 {
-                    var context = await browser.NewContextAsync();
-                    var page = await context.NewPageAsync();
-                    var response = await page.GotoAsync(url);
+                    var page = await GetPage(url, browser);
                     var content = await page.ContentAsync();
                     return content;
                 }
@@ -63,9 +60,49 @@ namespace BarbezDotEu.Playwright
             }
         }
 
-        public async Task RenderImage(string url)
+        /// <summary>
+        /// Asynchronously renders an image of the specified URL.
+        /// </summary>
+        /// <param name="url">The URL of the web page to render.</param>
+        /// <param name="options">Optional screenshot options such as file path, quality, etc.</param>
+        /// <returns>A task that represents the asynchronous operation. The task result contains the screenshot image as a byte array.</returns>
+        public async Task<byte[]> GetScreenshot(string url, PageScreenshotOptions options = default)
         {
-            throw new NotImplementedException();
+            var playwright = await Microsoft.Playwright.Playwright.CreateAsync();
+            try
+            {
+                var @type = BrowserSelector.GetBrowserType(playwright, _browser);
+                var browser = await @type.LaunchAsync(_browserTypeLaunchOption);
+                try
+                {
+                    var page = await GetPage(url, browser);
+                    var screenshot = await page.ScreenshotAsync(options);
+                    return screenshot;
+                }
+                finally
+                {
+                    await browser.CloseAsync();
+                }
+            }
+            finally
+            {
+                playwright.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// Creates a new page in a fresh browser context, navigates to the specified URL,
+        /// and returns the loaded page.
+        /// </summary>
+        /// <param name="url">The URL of the web page to load.</param>
+        /// <param name="browser">The browser instance used to create a new context and page.</param>
+        /// <returns>An <see cref="IPage"/> instance with the loaded content.</returns>
+        private static async Task<IPage> GetPage(string url, IBrowser browser)
+        {
+            var context = await browser.NewContextAsync();
+            var page = await context.NewPageAsync();
+            await page.GotoAsync(url);
+            return page;
         }
     }
 }
