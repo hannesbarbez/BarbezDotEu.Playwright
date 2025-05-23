@@ -7,7 +7,7 @@
 		<Product>BarbezDotEu.Playwright</Product>
 		<PackageId>BarbezDotEu.Playwright</PackageId>
 		<Copyright>©2025 Hannes Barbez</Copyright>
-		<Version>1.0.2</Version>
+		<Version>2.0.0</Version>
 		<Description>
 			Helps retrieving content from web pages using Microsoft.Playwright. Useful for basic testing or fetching content from dynamic pages that require JavaScript execution.
 		</Description>
