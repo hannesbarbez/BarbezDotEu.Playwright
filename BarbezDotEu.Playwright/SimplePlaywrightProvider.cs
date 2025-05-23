@@ -66,7 +66,7 @@ namespace BarbezDotEu.Playwright
         /// <param name="url">The URL of the web page to render.</param>
         /// <param name="options">Optional screenshot options such as file path, quality, etc.</param>
         /// <returns>A task that represents the asynchronous operation. The task result contains the screenshot image as a byte array.</returns>
-        public async Task<byte[]> GetScreenshot(string url, PageScreenshotOptions options = default)
+        public async Task<byte[]> MakeScreenshot(string url, PageScreenshotOptions options = default)
         {
             var playwright = await Microsoft.Playwright.Playwright.CreateAsync();
             try
