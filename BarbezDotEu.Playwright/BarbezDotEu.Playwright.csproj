@@ -7,7 +7,7 @@
 		<Product>BarbezDotEu.Playwright</Product>
 		<PackageId>BarbezDotEu.Playwright</PackageId>
 		<Copyright>©2025 Hannes Barbez</Copyright>
-		<Version>2.0.0</Version>
+		<Version>2.0.1</Version>
 		<Description>
 			Helps retrieving content from web pages using Microsoft.Playwright. Useful for basic testing or fetching content from dynamic pages that require JavaScript execution.
 		</Description>
@@ -24,6 +24,14 @@
 		<PackageIcon>ICON.png</PackageIcon>
 		<DebugSymbols>true</DebugSymbols>
 	</PropertyGroup>
+
+    <!-- only applies when Configuration == Release: -->
+    <PropertyGroup Condition="'$(Configuration)'=='Release'">
+        <!-- Turn off generation of a .pdb and strip debug info entirely -->
+        <DebugType>none</DebugType>
+        <DebugSymbols>false</DebugSymbols>
+        <Optimize>true</Optimize>
+    </PropertyGroup>
 	<ItemGroup>
 		<None Include="..\README.md" Pack="true" PackagePath="\" />
 		<None Include="..\ICON.png" Pack="true" PackagePath="\" />
