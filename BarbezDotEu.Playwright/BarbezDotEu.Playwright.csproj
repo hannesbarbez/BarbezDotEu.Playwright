@@ -37,6 +37,6 @@
 		<None Include="..\ICON.png" Pack="true" PackagePath="\" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Playwright" Version="1.52.0" />
+		<PackageReference Include="Microsoft.Playwright" Version="1.62.0" />
 	</ItemGroup>
 </Project>
